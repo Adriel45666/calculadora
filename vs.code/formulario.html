@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="return validarFormulario()">
+       
+        <input type="text"id="nome"placeholder="Digite seu nome" onblur="validarNome()"><br><br>
+        <input type="email" id="email"placeholder="Digite seu e-mail" disabled><br><br>
+        <button type="submit" disabled id="btnEnviar">enviar</button>
+   
+    </form>
+
+    <p id="mensagemErro" style="color: red;"></p>
+    
+    <script>
+        function validarNome(){
+          let nome = document.getElementById("nome").value;
+          let mensagemErro = document.getElementById("mensagemErro");
+          let email = document.getElementById("email");
+          let btnEnviar = document.getElementById("btnEnviar");
+
+          if (nome === "") {
+            mensagemErro.innerText = "Por favor, preencha o campo de nome.";
+            email.disabled = true;
+            btnEnviar.disabled = true;
+            return false;
+          }
+
+          if (!nome.includes(" ")) {
+            mensagemErro.innerText = "Por favor, digite seu nome completo (nome e sobrenome)."
+            email.disabled = true;
+            return false;
+          }
+
+          mensagemErro.innerText = "";
+          alert("Nome validado! Agora preencha o e-mail.")
+          email.disabled = false;
+          btnEnviar.disabled = false;
+          return true;
+        }
+
+        function validarFormulario(){
+          
+            let email = document.getElementById("email").value.trim();
+            let mensagemErro = document.getElementById("mensagemErro");
+         
+
+            if(email === ""){
+                mensagemErro.innerText = "Por favor, preencha todos os campos!"
+                return false;
+            }
+
+            mensagemErro.innerText = "";
+            alert("Formulario enviado com sucesso!")
+            return true;
+        }
+</script>
+</body>
+</html>

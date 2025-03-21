@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="numero" placeholder="Digite um numero">
+    <button onclick="verificar()">Verificar</button>
+    <p id="verificar"></p>
+    <button onclick="aumentarNumero()">aumentar numero</button>
+    <button onclick="diminuirNumero()">diminuir numero</button>
+    <button onclick="corBotao()">mudar cor</button>
+    <p id="contador"></p>
+    <p id="resultado"></p>
+
+
+
+    <script>
+
+        let contador = 0; 
+
+        function aumentarNumero() {
+            contador++; 
+            document.getElementById("contador").innerText = contador; 
+        }
+
+        function diminuirNumero() {
+            contador--; 
+            document.getElementById("contador").innerText = contador; 
+        }
+
+       
+        
+
+        function corBotao() {
+            const cores = ['black', 'blue', 'red', 'green', 'purple', 'magenta', 'gray'];
+            const corPagina = cores[Math.floor(Math.random() * cores.length)];
+            document.body.style.backgroundColor = corPagina; 
+        }
+
+        function verificar(){
+            const resultadoDiv = document.getElementById("resultado");
+            let num = document.getElementById("numero").value
+            if (num % 2 === 0){
+            resultadoDiv.innerText = "O número é par.";
+        } else {
+            resultadoDiv.innerText = "O número é ímpar.";
+        }
+    }
+        
+        
+    </script>
+</body>
+</html>
